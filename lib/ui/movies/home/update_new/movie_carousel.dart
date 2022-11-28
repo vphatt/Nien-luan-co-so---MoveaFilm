@@ -16,11 +16,13 @@ class MovieCarousel extends StatelessWidget {
     final movies = context.select<MoviesManager, List<Movie>>(
         (moviesManager) => moviesManager.items);
 
+    final filter = movies.reversed.toList();
+
     return SizedBox(
       child: CarouselSlider.builder(
         itemCount: length,
         itemBuilder: (context, index, realIndex) =>
-            MovieCarouselSlide(movies[index]),
+            MovieCarouselSlide(filter[index]),
         options: CarouselOptions(
           enlargeCenterPage: true,
           autoPlay: true,
