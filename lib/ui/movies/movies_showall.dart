@@ -24,11 +24,6 @@ class _MoviesShowAllState extends State<MoviesShowAll> {
     final movies = context.select<MoviesManager, List<Movie>>(
         (moviesManager) => moviesManager.items);
 
-    // final filter = movies
-    // .where((element) =>
-    //     element.category.toLowerCase().contains(Pattern widget.category.toLowerCase(), [int startIndex = 0]))
-    // .toList();
-
     return Scaffold(
         key: _scaffoldKey,
         backgroundColor: const Color.fromARGB(255, 32, 26, 63),
