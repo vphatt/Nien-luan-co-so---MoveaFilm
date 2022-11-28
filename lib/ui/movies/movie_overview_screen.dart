@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import '../search/search.dart';
 import 'home/coming/coming_grid.dart';
 import 'home/coming/movies_coming_manager.dart';
+import 'movies_coming_showall.dart';
 import 'movies_grid.dart';
 import 'home/update_new/movie_carousel.dart';
 
@@ -111,7 +112,19 @@ class _MoviesOverviewScreenState extends State<MoviesOverviewScreen> {
                 ],
               ),
               const MoviesGrid(),
-              _headTitle(context, 'Phim Sắp Chiếu'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _headTitle(context, 'Phim Sắp Chiếu'),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const MoviesComingShowAll()));
+                      },
+                      child: const Text('Tất cả',
+                          style: TextStyle(color: Colors.green, fontSize: 20)))
+                ],
+              ),
               const ComingGrid(),
             ],
           ),
