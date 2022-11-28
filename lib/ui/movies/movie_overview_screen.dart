@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:movies/ui/movies/movies_manager.dart';
+import 'package:movies/ui/movies/movies_showall.dart';
 
 import 'package:movies/ui/shared/app_drawer.dart';
 
@@ -96,7 +97,19 @@ class _MoviesOverviewScreenState extends State<MoviesOverviewScreen> {
             children: <Widget>[
               _headTitle(context, 'Mới Cập Nhật'),
               const MovieCarousel(4),
-              _headTitle(context, 'Gợi Ý'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _headTitle(context, 'Gợi Ý'),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const MoviesShowAll()));
+                      },
+                      child: const Text('Tất cả',
+                          style: TextStyle(color: Colors.green, fontSize: 20)))
+                ],
+              ),
               const MoviesGrid(),
               _headTitle(context, 'Phim Sắp Chiếu'),
               const ComingGrid(),
@@ -106,7 +119,10 @@ class _MoviesOverviewScreenState extends State<MoviesOverviewScreen> {
     //MoviesGrid(false),
   }
 
-  Widget _headTitle(BuildContext context, String ctx) {
+  Widget _headTitle(
+    BuildContext context,
+    String ctx,
+  ) {
     final height = MediaQuery.of(context).size.height;
     return Container(
       height: height * 1 / 25,
